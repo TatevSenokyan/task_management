@@ -23,3 +23,11 @@ exports.createTask = async (req, res) => {
         res.status(500).json({"message": "internal server error"});
     }
 }
+
+exports.taskDetails = async(req, res) => {
+  console.log("Start Get TaskDetails", req.query);
+  const {id} = req.query;
+  const task = await Task.findOne({_id: id}).exec();
+  console.log("task", task)
+  res.render("routes/taskDetails", {taskData: task});
+}

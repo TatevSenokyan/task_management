@@ -8,7 +8,10 @@ exports.renderLogin = (req, res) => {
     res.render("routes/login");
 }
 
-exports.renderTask = async (_, res) => {
-    const tasks =  await Task.find({}).exec();
+exports.renderTask = async (req, res) => {
+    console.log('renderTask')
+    const {state} = req.query; 
+    const filter = state ? {status: state} : {};
+    const tasks =  await Task.find(filter).exec();
     res.render("routes/task", {data: tasks});
 }

@@ -5,7 +5,8 @@ const activitySchema = Schema({
     activity: {type: String, required: true, lowercase: true},
     author: {type: String, required: true, lowercase: true},
     description: {type: String, required: true, lowercase: true},
-  },{ _id : false });
+    date: {type: Date, default: Date.now, get: (v) => new Date(v).toLocaleString()}
+  }, { _id : false });
 
 const taskSchema = new Schema(
     {

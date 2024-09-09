@@ -1,4 +1,5 @@
 const User = require("../models/Users");
+const Task = require("../models/Tasks");
 
 exports.register = async (req, res) => {
     console.log("Start Register");
@@ -27,13 +28,17 @@ exports.login = async (req, res) => {
     const user =  await User.findOne({email});
 
     if (!user) {
+        res.render("routes/login");
         return res.status(404).json({message: "User Doesn't Exist"});
     }
     const result = await user.matchPassword(password);
     if (result) {
-        res.render("routes/task");
+        res.cookie("name", email);
+        res.render("routes/task", {data: await Task.find({})});
     } else {
-        return res.status(404).json({message: "Password isn't correct"});
+        
+        res.render("routes/login");
+        //return res.status(404).json({message: "Password isn't correct"});
     }
 
 }

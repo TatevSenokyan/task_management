@@ -7,11 +7,14 @@ html(lang="en")
   body
     div(class="w-full h-screen flex relative select-none")
       include ../components/editModal
-      button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick='handleEditModal()') Edit
+      button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick="handleEditModal()") Edit
       include ../components/menu
-      div
+      div(class="w-full mx-auto")
        p= taskData.title
        p= taskData.description
+       p= taskData.status
+       p= taskData.priority
+       p= taskData.assignee
     script.
       const handleEditModal = () => {
         document.querySelector(".edit").classList.remove("hidden");

@@ -4,7 +4,7 @@ const router = new express.Router();
 const { 
     renderRegister,
     renderLogin,
-    renderTask
+    renderTask,
 } = require("../controllers/render.controller");
 
 router.get("/", renderRegister);

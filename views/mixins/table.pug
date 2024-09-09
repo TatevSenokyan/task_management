@@ -11,15 +11,10 @@ mixin table(data)
     tbody
         each item in data
           tr
-          td(onclick=`handleClick('${item.name}')` class="text-center") #{item.title}
+          td(class="text-center") 
+            a(href=`/taskDetails?id=${item._id}`) #{item.title}
           td(class="text-center")= item.priority
           td(class="text-center")= item.status
           td(class="text-center")= item.assignee
           td(class="text-center")= item.created
           td(class="text-center")= item.deadline
-    script.
-      function handleClick(item) {
-           fetch('/task/details', {header: {method: "POST"}}).then((resp)=>resp.text()).then((html)=>{
-              document.querySelector(".task").innerHTML = html;
-           })
-      }
