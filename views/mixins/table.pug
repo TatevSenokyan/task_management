@@ -1,0 +1,25 @@
+mixin table(data)
+  table(class="mx-auto w-[80%]")
+    thead
+        tr
+        th Title
+        th Priority
+        th Status
+        th Assignee
+        th Created
+        th Due Date
+    tbody
+        each item in data
+          tr
+          td(onclick=`handleClick('${item.name}')` class="text-center") #{item.title}
+          td(class="text-center")= item.priority
+          td(class="text-center")= item.status
+          td(class="text-center")= item.assignee
+          td(class="text-center")= item.created
+          td(class="text-center")= item.deadline
+    script.
+      function handleClick(item) {
+           fetch('/task/details', {header: {method: "POST"}}).then((resp)=>resp.text()).then((html)=>{
+              document.querySelector(".task").innerHTML = html;
+           })
+      }

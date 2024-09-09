@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    meta(charser="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/styles.css")
+  body
+    div(class="w-auto mx-auto flex")
+      -const infoData = [{"Tasks": 10}, {"Completed": 23}, {"In Progress": 10}, {"To Do": 12}]
+      each item in infoData
+       div(class="w-[150px] h-[50px] border-[#000] m-[10px] p-[10px] flex justify-between bg-[#fff] shadow-[0px_4px_14px_0px_#61606029]") 
+          p= Object.keys(item)[0]
+          p= Object.values(item)[0]

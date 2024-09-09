@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  head
+    meta(charser="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/styles.css")
+  body
+    div(class="select-none h-full w-[300px] shadow-[0px_4px_14px_0px_#61606029] flex flex-col items-center justify-center")
+        p(onclick="handleSelect(0)" class="text-left w-[120px] h-[30px] bg-blue-500 text-[#fff] rounded-[10px] px-[10px] flex items-center") Tasks
+        p(onclick="handleSelect(1)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Completed
+        p(onclick="handleSelect(2)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") In Progress
+        p(onclick="handleSelect(3)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") To Do
+        p(onclick="handleSelect(4)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
+    script.
+      const handleSelect = (index) => {
+        document.querySelectorAll(".task>div>p").
+          forEach((text, i)=>i===index ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));
+      }

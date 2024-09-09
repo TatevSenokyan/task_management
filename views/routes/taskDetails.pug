@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charser="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/styles.css")
+  body
+    div(class="w-full h-screen flex relative select-none")
+      include ../components/editModal
+      button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick='handleEditModal()') Edit
+      include ../components/menu
+      div
+       p= taskData.title
+       p= taskData.description
+    script.
+      const handleEditModal = () => {
+        document.querySelector(".edit").classList.remove("hidden");
+        document.querySelector(".edit").classList.add("flex");
+      }
