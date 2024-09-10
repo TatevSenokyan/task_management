@@ -10,11 +10,17 @@ html(lang="en")
       button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick="handleEditModal()") Edit
       include ../components/menu
       div(class="w-full mx-auto")
-       p= taskData.title
+       div
+        span(class="text-[green] uppercase") title----
+        span= taskData.title
        p= taskData.description
        p= taskData.status
        p= taskData.priority
        p= taskData.assignee
+       each item in taskData.updateHistory
+        div
+          p= item.date 
+          p= item.description
     script.
       const handleEditModal = () => {
         document.querySelector(".edit").classList.remove("hidden");

@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cookieParser = require('cookie-parser');
 
 require("dotenv").config();
 require("./db/mongo");
 app.use(express.json());
+app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static("public"));
