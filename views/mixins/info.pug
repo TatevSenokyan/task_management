@@ -1,0 +1,6 @@
+mixin info(infoData)
+    div(class="w-auto mx-auto flex")
+      each item in infoData
+       div(class="w-[150px] h-[50px] border-[#000] m-[10px] p-[10px] flex justify-between bg-[#fff] shadow-[0px_4px_14px_0px_#61606029]") 
+          p= item.status
+          p= item.count

@@ -10,9 +10,10 @@ html(lang="en")
       include ../components/taskModal
       include ../components/menu
       div(class="flex flex-col w-full h-full")
-        include ../components/info
+        include ../mixins/info
         include ../mixins/table
-        +table(data)
+        +info(infoData)
+        +table(tasks)
     script.
       const handleOpenModal = () => {
         document.querySelector(".modal").classList.remove("hidden");

@@ -1,0 +1,16 @@
+mixin editModal (taskData)
+    div(class="edit hidden absolute w-full h-full bg-[rgba(108,_108,_108,_0.37)] items-center justify-center")
+      div(class="w-[300px] h-[320px] bg-[#fff] shadow-[0px_4px_14px_0px_#61606029] relative")
+        p(onclick="handleCloseEditModal()" class="text-[20px] absolute right-[5%] cursor-pointer") x
+        form(action= `/taskUpdate?id=${taskData._id}` method="POST" class="w-[300px] h-[300px] mt-[20px]")
+          label(class="text-[#999999] mx-[5%]") Change status
+          select(name="status" class="w-[90%] mx-[5%] h-[30px] border-[1px] text-[#999999] rounded-[10px] mt-[10px]")
+            option
+            option completed
+            option todo
+            option progress
+          textarea(name="comment" cols="30" rows="30" placeholder="add comment" resize class="w-[90%] h-[100px] mx-[5%] border-[1px] rounded-[10px] outline-none px-[10px] mt-[10px]")
+          button(type="submit" class="w-[90%] h-[40px] absolute right-[5%] bottom-[20px] text-[#fff] flex items-center justify-center bg-blue-500 rounded-[10px]") Submit
+             
+    script.
+      const handleCloseEditModal = (e) => document.querySelector(".edit").classList.add("hidden");

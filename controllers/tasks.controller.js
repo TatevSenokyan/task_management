@@ -1,4 +1,5 @@
 const Task = require("../models/Tasks");
+const { getTaskData } = require("../handlers/taskDataHandler");
 
 exports.createTask = async (req, res) => {
     console.log("Start Create Task");
@@ -16,8 +17,8 @@ exports.createTask = async (req, res) => {
       })
 
       await newTask.save();
-      console.log("Task Successfully created")
-      res.render("routes/task", {data: await Task.find({})});
+      console.log("Task Successfully created");
+      res.redirect("/task");
     } catch (err) {
         console.log(`Creating Task err---${err.message}`);
         res.status(500).json({"message": "internal server error"});
@@ -28,7 +29,6 @@ exports.taskDetails = async(req, res) => {
   console.log("Start Get TaskDetails", req.query);
   const {id} = req.query;
   const task = await Task.findOne({_id: id}).exec();
-  console.log("task", task)
   res.render("routes/taskDetails", {taskData: task});
 }
 
@@ -61,8 +61,8 @@ exports.taskUpdate = async(req, res) => {
   
   console.log("updateObject", updateObject)
   try {
-    const updatedDoc = await Task.updateOne({_id: id}, updateObject, { new: true });
-    console.log("Task successfully updated", updatedDoc);
+    await Task.findOneAndUpdate({_id: id}, updateObject, { new: true });
+    res.redirect(`/taskDetails?id=${id}`);
   } catch (err) {
      console.log(`Task update error---${err.message}`);
   }

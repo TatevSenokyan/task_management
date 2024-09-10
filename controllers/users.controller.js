@@ -1,5 +1,4 @@
 const User = require("../models/Users");
-const Task = require("../models/Tasks");
 
 exports.register = async (req, res) => {
     console.log("Start Register");
@@ -14,7 +13,7 @@ exports.register = async (req, res) => {
         const newUser = new User({name, email, password});
         await newUser.save();
         console.log("Registration Success");
-        res.render("routes/login");
+        res.redirect("/login");
     } catch (err) {
         console.log(`user registration error---${err.message}`);
         return res.status(500).json({message: "internal server error"});
@@ -28,16 +27,15 @@ exports.login = async (req, res) => {
     const user =  await User.findOne({email});
 
     if (!user) {
-        res.render("routes/login");
-        return res.status(404).json({message: "User Doesn't Exist"});
+        res.redirect("/login");
+        
     }
     const result = await user.matchPassword(password);
     if (result) {
         res.cookie("name", email);
-        res.render("routes/task", {data: await Task.find({})});
+        res.redirect("/task");
     } else {
-        
-        res.render("routes/login");
+        res.redirect("/login");
         //return res.status(404).json({message: "Password isn't correct"});
     }
 

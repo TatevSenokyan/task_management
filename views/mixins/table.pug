@@ -1,4 +1,4 @@
-mixin table(data)
+mixin table(tasks)
   table(class="mx-auto w-[80%]")
     thead
         tr
@@ -9,7 +9,7 @@ mixin table(data)
         th Created
         th Due Date
     tbody
-        each item in data
+        each item in tasks
           tr
           td(class="text-center") 
             a(href=`/taskDetails?id=${item._id}`) #{item.title}

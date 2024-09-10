@@ -7,7 +7,7 @@ const {
     taskUpdate
 } = require("../controllers/tasks.controller");
 
-router.post("/api/createTask", createTask);
+router.post("/createTask", createTask);
 router.post("/taskUpdate", taskUpdate);
 router.get("/taskDetails", taskDetails);
 
