@@ -17,9 +17,18 @@ html(lang="en")
           a(href="/task?state=to do") To Do
         p(onclick="handleSelect(4)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
     script.
-      const cookie = document.cookie.split("=")[1];
-      document.querySelector(".user").innerText = `logged in: ${ cookie ? decodeURIComponent(cookie) : ""}`;
+      let selected = 0;
+      (function(){
+        // Add user email if user is logged in
+        const cookie = document.cookie.split("=")[1];
+        document.querySelector(".user").innerText = `logged in: ${ cookie ? decodeURIComponent(cookie) : ""}`;
+        document.querySelectorAll(".task>div>p").
+          forEach((text, i)=>i===selected ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));
+      })();
+      
       const handleSelect = (index) => {
+        selected = index;
         document.querySelectorAll(".task>div>p").
           forEach((text, i)=>i===index ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));
       }
+      

@@ -1,13 +1,5 @@
-doctype html
-html(lang="en")
-  head
-    meta(charser="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="/styles/styles.css")
-  body
-    div(class="modal hidden absolute w-full h-full bg-[rgba(108,_108,_108,_0.37)] items-center justify-center")
-      div(class="w-[300px] h-[320px] bg-[#fff] shadow-[0px_4px_14px_0px_#61606029] relative")
-        p(onclick="handleCloseModal()" class="text-[20px] absolute right-[5%] cursor-pointer") x
+mixin taskModal ()
+    p(onclick="handleCloseModal()" class="text-[20px] absolute right-[5%] cursor-pointer") x
         form(action="createTask" method="POST" class="w-[300px] h-[300px] mt-[20px]")
           input(required type="text" name="title" placeholder="title" class="w-[90%] h-[30px] mx-[5%] border-[1px] rounded-[10px] outline-none px-[10px] mt-[10px]")
           textarea(required name="description" cols="30" rows="30" placeholder="description" resize class="w-[90%] h-[100px] mx-[5%] border-[1px] rounded-[10px] outline-none px-[10px] mt-[10px]")
@@ -25,5 +17,5 @@ html(lang="en")
           div(class="w-[90%] mx-[5%] flex mt-[10px]")
              button(type="submit" class="w-full text-[#fff] flex items-center justify-center bg-blue-500 rounded-[10px]") Submit
     script.
-      const handleCloseModal = (e) => document.querySelector(".modal").classList.add("hidden");
       document.querySelector("input[name=deadline]").setAttribute("min", new Date().toISOString().slice(0, 10));
+    

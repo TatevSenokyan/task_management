@@ -1,0 +1,14 @@
+mixin modal (taskModal, editModal, taskData)
+    div(class="modal hidden absolute w-full h-full bg-[rgba(108,_108,_108,_0.37)] items-center justify-center")
+      div(class="w-[300px] h-[320px] bg-[#fff] shadow-[0px_4px_14px_0px_#61606029] relative")
+        if taskData
+          +editModal(taskData)
+        else
+          +taskModal
+    script.
+      const handleCloseModal = (e) => document.querySelector(".modal").classList.add("hidden");
+      
+      const handleOpenModal = () => {
+        document.querySelector(".modal").classList.remove("hidden");
+        document.querySelector(".modal").classList.add("flex");
+      }

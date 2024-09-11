@@ -6,10 +6,13 @@ html(lang="en")
     link(rel="stylesheet", href="/styles/styles.css")
   body
     div(class="w-full h-screen flex relative select-none")
-      include ../mixins/editModal
-      +editModal(taskData)
-      button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick="handleEditModal()") Edit
+      button(class="w-[150px] absolute right-2 bg-blue-500 text-[#fff] rounded-[10px] p-[10px] top-[10px]" onclick="handleOpenModal()") Edit
+      include ../mixins/modal/modal
+      include ../mixins/modal/components/taskModal
+      include ../mixins/modal/components/editModal
       include ../components/menu
+      +modal(editModal, taskModal, taskData)
+
       div(class="w-full text-center")
        div
         span(class="text-[green] uppercase font-bold") title----
@@ -32,8 +35,3 @@ html(lang="en")
         div(class="w-full text-center mt-[5px]")
           p(class="text-[green] text-[18px]")= item.date 
           p(class="text-[15px]")= item.description
-    script.
-      const handleEditModal = () => {
-        document.querySelector(".edit").classList.remove("hidden");
-        document.querySelector(".edit").classList.add("flex");
-      }
