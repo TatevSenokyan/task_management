@@ -11,8 +11,10 @@ html(lang="en")
           a(href="/task") Tasks
         p(onclick="handleSelect(1)" class="z-[10] text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
           a(href="/task?state=completed") Completed
-        p(onclick="handleSelect(2)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") In Progress
-        p(onclick="handleSelect(3)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") To Do
+        p(onclick="handleSelect(2)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
+          a(href="/task?state=in progress") In Progress
+        p(onclick="handleSelect(3)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
+          a(href="/task?state=to do") To Do
         p(onclick="handleSelect(4)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
     script.
       const cookie = document.cookie.split("=")[1];

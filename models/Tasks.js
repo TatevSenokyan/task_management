@@ -15,8 +15,8 @@ const taskSchema = new Schema(
         assignee: {type: String, required: true, lowercase: true},
         priority: {type: String, required: true, enum: ["high", "low", "normal"]},
         status: {type: String, required: true, enum: ["completed", "to do", "in progress"], default: "to do"},
-        created: {type: Date, default: Date.now, get: (v) => new Date(v).toLocaleString()},
-        deadline: {type: Date, required: true, get: (v) => new Date(v).toLocaleString()},
+        created: {type: Number, default: Date.now},
+        deadline: {type: Number, required: true},
         updateHistory: [activitySchema] 
     }, 
     {versionKey: false}  

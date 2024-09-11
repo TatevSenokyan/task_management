@@ -13,7 +13,7 @@ exports.createTask = async (req, res) => {
         priority,
         status,
         assignee,
-        deadline
+        deadline: new Date(deadline).getTime()
       })
 
       await newTask.save();
@@ -40,7 +40,7 @@ exports.taskUpdate = async(req, res) => {
   const author = req.cookies['name'];
   const updateObject = {};
   let activity =  "";
-  let description = `${author}`;
+  let description = `${author}--`;
   
   if (status) {
     activity += "change status,";

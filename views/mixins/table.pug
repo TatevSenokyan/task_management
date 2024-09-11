@@ -16,5 +16,5 @@ mixin table(tasks)
           td(class="text-center")= item.priority
           td(class=`text-center ${item.status==="in progress" && "text-[#008000]"} ${item.status==="completed" && "text-[#FF0000]"}`)= item.status
           td(class="text-center")= item.assignee
-          td(class="text-center")= item.created
-          td(class="text-center")= item.deadline
+          td(class="text-center")= new Date(item.created).toLocaleDateString("en-GB")
+          td(class="text-center")= new Date(item.deadline).toLocaleDateString("en-GB")
