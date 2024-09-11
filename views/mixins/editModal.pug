@@ -4,7 +4,7 @@ mixin editModal (taskData)
         p(onclick="handleCloseEditModal()" class="text-[20px] absolute right-[5%] cursor-pointer") x
         form(action= `/taskUpdate?id=${taskData._id}` method="POST" class="w-[300px] h-[300px] mt-[20px]")
           label(class="text-[#999999] mx-[5%]") Change status
-          select(name="status" class="w-[90%] mx-[5%] h-[30px] border-[1px] placeholder-text-[#999999] rounded-[10px] mt-[10px]")
+          select(name="status" class="w-[90%] mx-[5%] h-[30px] border-[1px] placeholder-[#999999] rounded-[10px] mt-[10px]")
             option(selected=taskData.status === "completed") completed
             option(selected=taskData.status === "to do") todo
             option(selected=taskData.status === "in progress") in progress
