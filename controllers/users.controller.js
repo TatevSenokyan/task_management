@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
     }
     const result = await user.matchPassword(password);
     if (result) {
-        res.cookie("name", email);
+        res.cookie("name", email, { maxAge: 3600000 });
         res.redirect("/task");
     } else {
         res.redirect("/login");

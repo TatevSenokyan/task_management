@@ -6,7 +6,7 @@ html(lang="en")
     link(rel="stylesheet", href="/styles/styles.css")
   body
     div(class="relative select-none h-full w-[20%] shadow-[0px_4px_14px_0px_#61606029] flex flex-col items-center justify-center")
-        span(class="absolute left-0 top-0 h-[20px]") logged in:
+        span(class="user absolute left-0 top-0 h-[20px]")
         p(onclick="handleSelect(0)" class="z-[10] text-left w-[120px] h-[30px] bg-blue-500 text-[#fff] rounded-[10px] px-[10px] flex items-center") 
           a(href="/task") Tasks
         p(onclick="handleSelect(1)" class="z-[10] text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
@@ -15,6 +15,8 @@ html(lang="en")
         p(onclick="handleSelect(3)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") To Do
         p(onclick="handleSelect(4)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
     script.
+      const cookie = document.cookie.split("=")[1];
+      document.querySelector(".user").innerText = `logged in: ${ cookie ? decodeURIComponent(cookie) : ""}`;
       const handleSelect = (index) => {
         document.querySelectorAll(".task>div>p").
           forEach((text, i)=>i===index ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));

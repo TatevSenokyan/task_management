@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 require("./db/mongo");
@@ -12,9 +12,9 @@ app.set("view engine", "pug");
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 
-const userRoutes = require('./routes/users.route');
-const taskRoutes = require('./routes/tasks.route');
-const renderRoutes = require('./routes/render.route');
+const userRoutes = require("./routes/users.route");
+const taskRoutes = require("./routes/tasks.route");
+const renderRoutes = require("./routes/render.route");
 
 app.use(userRoutes);
 app.use(taskRoutes);
