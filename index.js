@@ -15,11 +15,12 @@ app.use(express.urlencoded({extended: true}));
 const userRoutes = require("./routes/users.route");
 const taskRoutes = require("./routes/tasks.route");
 const renderRoutes = require("./routes/render.route");
+const reportRoutes = require("./routes/report.route");
 
 app.use(userRoutes);
 app.use(taskRoutes);
 app.use(renderRoutes);
-
+app.use(reportRoutes);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`App server is listening to port: ${process.env.PORT}`);

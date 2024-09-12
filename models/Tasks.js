@@ -17,6 +17,7 @@ const taskSchema = new Schema(
         status: {type: String, required: true, enum: ["completed", "to do", "in progress"], default: "to do"},
         created: {type: Number, default: Date.now},
         deadline: {type: Number, required: true},
+        completed: {type: Number, default: null},
         updateHistory: [activitySchema] 
     }, 
     {versionKey: false}  

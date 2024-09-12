@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charser="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/styles.css")
+  body
+    div(class="w-full h-screen flex select-none")
+      include ../components/menu
+      div(class="w-[80%] h-full flex justify-center items-center")
+        form(action="/reports" method="GET" class="w-[30%]")
+          div(class="flex flex-col w-full h-[50px] text-[#999999] text-center")
+           label(class="font-bold text-[green] uppercase") start date
+           input(type="date" name="startdate" class="w-full h-[40px] border-[1px] rounded-[10px] outline-none")
+          div(class="flex flex-col w-full h-[50px] text-[#999999] text-center mt-[10px]")
+           label(class="font-bold text-[green] uppercase") end date
+           input(type="date" name="deadline" class="w-full h-[40px] border-[1px] rounded-[10px] outline-none")
+          div(class="flex flex-col w-full h-[50px] text-[#999999] text-center mt-[10px]")
+           label(class="font-bold text-[green] uppercase") assignee
+           input(type="text" name="assignee" placeholder="assignee" class="px-[10px] w-full h-[40px] border-[1px] rounded-[10px] outline-none")
+          button(type="submit" class="w-full h-[40px] bg-blue-500 text-[#fff] rounded-[10px] mt-[30px]") task completion report 
+        

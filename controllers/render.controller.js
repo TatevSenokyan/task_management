@@ -8,6 +8,10 @@ exports.renderLogin = (req, res) => {
     res.render("routes/login");
 }
 
+exports.renderReport = (req, res) => {
+    res.render("routes/reports");
+}
+
 exports.renderTask = async (req, res) => {
     console.log('renderTask')
     const { state } = req.query; 

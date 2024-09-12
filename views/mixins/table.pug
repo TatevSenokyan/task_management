@@ -8,6 +8,7 @@ mixin table(tasks, infoData)
         th Assignee
         th Created
         th Due Date
+        th Completed
     tbody
         each item in tasks
           tr
@@ -18,3 +19,4 @@ mixin table(tasks, infoData)
           td(class="text-center")= item.assignee
           td(class="text-center")= new Date(item.created).toLocaleDateString("en-GB")
           td(class="text-center")= new Date(item.deadline).toLocaleDateString("en-GB")
+          td(class="text-center")= item.completed ? new Date(item.completed).toLocaleDateString("en-GB") : ""

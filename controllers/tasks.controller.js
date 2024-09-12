@@ -1,5 +1,4 @@
 const Task = require("../models/Tasks");
-const { getTaskData } = require("../handlers/taskDataHandler");
 
 exports.createTask = async (req, res) => {
     console.log("Start Create Task");
@@ -44,7 +43,7 @@ exports.taskUpdate = async(req, res) => {
   
   if (status) {
     activity += "change status,";
-    updateObject.$set = { status };
+    updateObject.$set = { status, completed: status==="completed" ? Date.now() : null };
     description += `change status to ${status},`;
   }
 

@@ -15,7 +15,8 @@ html(lang="en")
           a(href="/task?state=in progress") In Progress
         p(data-status="todo" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
           a(href="/task?state=to do") To Do
-        p(class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
+        p(data-status="report" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
+          a(href="/report") Reports
     script.
       (function() {
         // Add user email if user is logged in
@@ -28,7 +29,9 @@ html(lang="en")
         if (state!=="null") {
           document.querySelector(`p[data-status=${state}]`).classList.add("bg-blue-500","text-[#fff]");
         }  else {
-          document.querySelector(`p[data-status=task]`).classList.add("bg-blue-500","text-[#fff]");
+          window.location.href.includes("report") ? 
+            document.querySelector(`p[data-status=report]`).classList.add("bg-blue-500","text-[#fff]") : 
+            document.querySelector(`p[data-status=task]`).classList.add("bg-blue-500","text-[#fff]")    
         }
       })();
       
