@@ -20,7 +20,6 @@ exports.createTask = async (req, res) => {
       res.redirect("/task");
     } catch (err) {
         console.log(`Creating Task err---${err.message}`);
-        res.status(500).json({"message": "internal server error"});
     }
 }
 
@@ -32,11 +31,10 @@ exports.taskDetails = async(req, res) => {
 }
 
 exports.taskUpdate = async(req, res) => {
-  console.log("Start Task Update", req.body, req.url, req.cookies['name']);
+  console.log("Start Task Update");
   const { status, comment } = req.body;
-  const {id} = req.query;
-  console.log("id", id)
-  const author = req.cookies['name'];
+  const { id } = req.query;
+  const author = req.cookies["name"];
   const updateObject = {};
   let activity =  "";
   let description = `${author}--`;
@@ -57,8 +55,7 @@ exports.taskUpdate = async(req, res) => {
      activity,
      description
   }};
-  
-  console.log("updateObject", updateObject)
+
   try {
     await Task.findOneAndUpdate({_id: id}, updateObject, { new: true });
     res.redirect(`/taskDetails?id=${id}`);

@@ -1,14 +1,14 @@
 const { getTaskData } = require("../handlers/taskDataHandler");
 
-exports.renderRegister = (req, res) => {
+exports.renderRegister = (_, res) => {
     res.render("routes/register");
 }
 
-exports.renderLogin = (req, res) => {
+exports.renderLogin = (_, res) => {
     res.render("routes/login");
 }
 
-exports.renderReport = (req, res) => {
+exports.renderReport = (_, res) => {
     res.render("routes/reports");
 }
 

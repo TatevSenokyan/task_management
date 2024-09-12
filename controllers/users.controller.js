@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
-    console.log("Start Login", req.body);
+    console.log("Start Login");
     const {email, password} = req.body;
 
     const user =  await User.findOne({email});
@@ -36,7 +36,5 @@ exports.login = async (req, res) => {
         res.redirect("/task");
     } else {
         res.redirect("/login");
-        //return res.status(404).json({message: "Password isn't correct"});
     }
-
 }
