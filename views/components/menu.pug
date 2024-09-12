@@ -7,28 +7,28 @@ html(lang="en")
   body
     div(class="relative select-none h-full w-[20%] shadow-[0px_4px_14px_0px_#61606029] flex flex-col items-center justify-center")
         span(class="user absolute left-0 top-0 h-[20px]")
-        p(onclick="handleSelect(0)" class="z-[10] text-left w-[120px] h-[30px] bg-blue-500 text-[#fff] rounded-[10px] px-[10px] flex items-center") 
+        p(data-status="task" class="z-[10] text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
           a(href="/task") Tasks
-        p(onclick="handleSelect(1)" class="z-[10] text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
+        p(data-status="completed" class="z-[10] text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") 
           a(href="/task?state=completed") Completed
-        p(onclick="handleSelect(2)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
+        p(data-status="inprogress" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
           a(href="/task?state=in progress") In Progress
-        p(onclick="handleSelect(3)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
+        p(data-status="todo" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center")
           a(href="/task?state=to do") To Do
-        p(onclick="handleSelect(4)" class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
+        p(class="text-left w-[120px] h-[30px] rounded-[10px] px-[10px] flex items-center") Reports
     script.
-      let selected = 0;
-      (function(){
+      (function() {
         // Add user email if user is logged in
         const cookie = document.cookie.split("=")[1];
         document.querySelector(".user").innerText = `logged in: ${ cookie ? decodeURIComponent(cookie) : ""}`;
-        document.querySelectorAll(".task>div>p").
-          forEach((text, i)=>i===selected ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));
+        
+        //Styles
+        const params = new URLSearchParams(new URL(window.location.href).search);
+        const state = decodeURIComponent(params.get("state")).replace(" ", "");
+        if (state!=="null") {
+          document.querySelector(`p[data-status=${state}]`).classList.add("bg-blue-500","text-[#fff]");
+        }  else {
+          document.querySelector(`p[data-status=task]`).classList.add("bg-blue-500","text-[#fff]");
+        }
       })();
-      
-      const handleSelect = (index) => {
-        selected = index;
-        document.querySelectorAll(".task>div>p").
-          forEach((text, i)=>i===index ? text.classList.add("bg-blue-500", "text-[#fff]") : text.classList.remove("bg-blue-500", "text-[#fff]"));
-      }
       

@@ -1,4 +1,4 @@
-mixin table(tasks)
+mixin table(tasks, infoData)
   table(class="mx-auto w-[80%]")
     thead
         tr
@@ -12,7 +12,7 @@ mixin table(tasks)
         each item in tasks
           tr
           td(class="text-center") 
-            a(href=`/taskDetails?id=${item._id}`) #{item.title}
+            a(href=`/taskDetails?id=${item._id}&&state=${infoData.length===1 ? infoData[0].status : "task"}`) #{item.title}
           td(class="text-center")= item.priority
           td(class=`text-center ${item.status==="in progress" && "text-[#008000]"} ${item.status==="completed" && "text-[#FF0000]"}`)= item.status
           td(class="text-center")= item.assignee
