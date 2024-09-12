@@ -6,4 +6,4 @@ MongoDB Atlas, Pug.js, TailwindCSS, MVC design pattern.
 2. menu component with tasks status filtering links
 3. task table with task details displaying option (click on each row title)
 4. task creating and updating modals (protected routes, allowed only logged in users)
-5. reports generation option (filtering by date period and/or task assignee)
+5. reports generating and loading option (filtering by date period and/or task assignee)
